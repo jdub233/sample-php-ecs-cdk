@@ -9,15 +9,15 @@ export class CdkStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const vpc = new ec2.Vpc(this, 'MyVpc', {
+    const vpc = new ec2.Vpc(this, 'SamplePhpVpc', {
       maxAzs: 3
     });
 
-    const cluster = new ecs.Cluster(this, 'MyCluster', {
+    const cluster = new ecs.Cluster(this, 'SamplePhpCluster', {
       vpc: vpc
     });
 
-    const fargate = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'MyFargateService', {
+    const fargate = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'SamplePhpFargateService', {
       cluster: cluster,
       cpu: 256,
       desiredCount: 1,
