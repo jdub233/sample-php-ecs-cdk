@@ -1,5 +1,3 @@
-FROM node:14
-WORKDIR /usr/src/app
-COPY index.js ./
-EXPOSE 80
-CMD ["node", "index.js"]
+FROM --platform=linux/amd64 php:8.0.9-apache
+
+COPY index.php /var/www/html
