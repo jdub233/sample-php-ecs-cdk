@@ -19,7 +19,7 @@ export class CdkStack extends Stack {
 
     const fargate = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'MyFargateService', {
       cluster: cluster,
-      cpu: 512,
+      cpu: 256,
       desiredCount: 1,
       taskImageOptions: {
         image: ecs.ContainerImage.fromAsset(path.join(__dirname, '../src/')),
@@ -27,7 +27,7 @@ export class CdkStack extends Stack {
           "name": "Serverless Fargate",
         },
       },
-      memoryLimitMiB: 2048,
+      memoryLimitMiB: 512,
     });
   }
 }
